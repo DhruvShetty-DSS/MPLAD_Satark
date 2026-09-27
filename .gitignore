@@ -217,3 +217,7 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 mplads_sentinel.db
+
+
+# Miscellaneous
+Summarize.md
