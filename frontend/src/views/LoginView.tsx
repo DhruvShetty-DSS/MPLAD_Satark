@@ -7,17 +7,30 @@ export const LoginView: React.FC = () => {
   const [email, setEmail] = useState('admin@mplads.gov.in');
   const [password, setPassword] = useState('admin123');
   const [selectedRole, setSelectedRole] = useState<UserRole>('Ministry Admin');
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleQuickFill = (r: UserRole) => {
     setSelectedRole(r);
     const demo = DEMO_USERS[r];
     setEmail(demo.email);
-    setPassword('admin123');
+    setPassword({
+      'Ministry Admin': 'admin123',
+      'State Nodal Authority': 'state123',
+      'District Authority': 'district123',
+      MP: 'mp123',
+    }[r]);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    login(email, selectedRole);
+    setError('');
+    setIsSubmitting(true);
+    login(email, password)
+      .catch((requestError) => {
+        setError(requestError.response?.data?.detail || 'Login failed. Check your email and password.');
+      })
+      .finally(() => setIsSubmitting(false));
   };
 
   return (
@@ -89,11 +102,13 @@ export const LoginView: React.FC = () => {
 
             <button
               type="submit"
+              disabled={isSubmitting}
               className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl shadow-lg transition flex items-center justify-center space-x-2 pt-3"
             >
-              <span>Access Security Dashboard</span>
+              <span>{isSubmitting ? 'Signing in...' : 'Access Security Dashboard'}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
+            {error && <p className="text-xs text-rose-400" role="alert">{error}</p>}
           </form>
 
           {/* Quick Demo Fill Buttons */}

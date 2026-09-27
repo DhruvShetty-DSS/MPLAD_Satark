@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
+import { api } from '../services/api';
 
 export type UserRole = 'MP' | 'District Authority' | 'State Nodal Authority' | 'Ministry Admin';
 
@@ -15,9 +16,8 @@ export interface User {
 interface AuthContextType {
   user: User | null;
   role: UserRole;
-  login: (email: string, role: UserRole) => void;
+  login: (email: string, password: string) => Promise<void>;
   logout: () => void;
-  switchRole: (role: UserRole) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -59,30 +59,34 @@ export const DEMO_USERS: Record<UserRole, User> = {
 };
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(DEMO_USERS['Ministry Admin']);
-  const [role, setRole] = useState<UserRole>('Ministry Admin');
+  const [user, setUser] = useState<User | null>(() => {
+    const savedUser = localStorage.getItem('mplads_user');
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
+  const [role, setRole] = useState<UserRole>(() => (
+    (localStorage.getItem('mplads_user_role') as UserRole) || 'Ministry Admin'
+  ));
 
-  const login = (email: string, targetRole: UserRole) => {
-    const selected = DEMO_USERS[targetRole] || DEMO_USERS['Ministry Admin'];
-    setUser(selected);
-    setRole(targetRole);
-    localStorage.setItem('mplads_user_role', targetRole);
+  const login = async (email: string, password: string) => {
+    const response = await api.post('/auth/login', { email, password });
+    const authenticatedUser = response.data.user as User;
+    setUser(authenticatedUser);
+    setRole(authenticatedUser.role);
+    localStorage.setItem('mplads_token', response.data.access_token);
+    localStorage.setItem('mplads_user', JSON.stringify(authenticatedUser));
+    localStorage.setItem('mplads_user_role', authenticatedUser.role);
   };
 
   const logout = () => {
     setUser(null);
+    setRole('Ministry Admin');
+    localStorage.removeItem('mplads_token');
+    localStorage.removeItem('mplads_user');
     localStorage.removeItem('mplads_user_role');
   };
 
-  const switchRole = (newRole: UserRole) => {
-    const selected = DEMO_USERS[newRole];
-    setUser(selected);
-    setRole(newRole);
-    localStorage.setItem('mplads_user_role', newRole);
-  };
-
   return (
-    <AuthContext.Provider value={{ user, role, login, logout, switchRole }}>
+    <AuthContext.Provider value={{ user, role, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
