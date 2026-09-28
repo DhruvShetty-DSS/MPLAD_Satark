@@ -30,15 +30,15 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, onSelectView }) =
   ];
 
   return (
-    <aside className="w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between h-screen sticky top-0 z-30">
+    <aside className="w-64 bg-[#F8F1E1] border-r border-[#6F4E37]/25 flex flex-col justify-between h-screen sticky top-0 z-30">
       <div>
         {/* Government Header Branding */}
-        <div className="p-5 border-b border-slate-800 flex items-center space-x-3">
-          <div className="p-2.5 bg-gradient-to-tr from-blue-700 to-indigo-600 rounded-xl shadow-lg shadow-blue-900/30 text-white">
+        <div className="p-5 border-b border-[#6F4E37]/25 flex items-center space-x-3">
+          <div className="p-2.5 bg-gradient-to-tr from-[#6F4E37] to-[#6D3B07] rounded-xl shadow-lg shadow-[#6D3B07]/20 text-[#F5F5DC]">
             <ShieldCheck className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="font-bold text-slate-100 text-sm tracking-tight">SATARK</h1>
+            <h1 className="font-bold text-[#2B1D12] text-sm tracking-tight">SATARK</h1>
           </div>
         </div>
 
@@ -53,16 +53,16 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, onSelectView }) =
                 onClick={() => onSelectView(item.id as ViewType)}
                 className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-medium transition-all ${
                   isActive
-                    ? 'bg-blue-600/15 text-blue-400 border border-blue-500/30 font-semibold'
-                    : 'text-slate-400 hover:bg-slate-800/60 hover:text-slate-200'
+                    ? 'bg-[#D47E30]/12 text-[#6D3B07] border border-[#D47E30]/30 font-semibold'
+                    : 'text-[#6F4E37] hover:bg-[#EFE2D1] hover:text-[#2B1D12]'
                 }`}
               >
                 <div className="flex items-center space-x-3">
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-blue-400' : 'text-slate-400'}`} />
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-[#6D3B07]' : 'text-[#6F4E37]'}`} />
                   <span>{item.label}</span>
                 </div>
                 {item.badge && (
-                  <span className="px-1.5 py-0.5 text-[9px] font-bold rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 uppercase">
+                  <span className="px-1.5 py-0.5 text-[9px] font-bold rounded bg-[#D47E30]/12 text-[#6D3B07] border border-[#D47E30]/30 uppercase">
                     {item.badge}
                   </span>
                 )}
@@ -73,9 +73,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, onSelectView }) =
       </div>
 
       {/* Footer Tagline */}
-      <div className="p-4 border-t border-slate-800/80 bg-slate-950/40 text-[11px] text-slate-500 text-center">
-        <p className="font-medium text-slate-400">Problem ID 26102</p>
-        <p className="text-[10px] text-slate-600 mt-0.5">Government Monitoring Prototype</p>
+      <div className="p-4 border-t border-[#6F4E37]/25 bg-[#F5F5DC] text-[11px] text-[#7C5A46] text-center">
+        <p className="font-medium text-[#6D3B07]">Problem ID 26102</p>
+        <p className="text-[10px] text-[#7C5A46] mt-0.5">Government Monitoring Prototype</p>
       </div>
     </aside>
   );

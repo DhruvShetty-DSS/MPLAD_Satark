@@ -21,26 +21,31 @@ export const KpiCard: React.FC<KpiCardProps> = ({
   color = 'blue'
 }) => {
   return (
-    <div className="bg-slate-800/80 backdrop-blur border border-slate-700/60 rounded-xl p-5 shadow-lg relative overflow-hidden transition-all hover:border-slate-600 hover:shadow-slate-900/50">
+    <div className="bg-[#F8F1E1] backdrop-blur border border-[#6F4E37]/20 rounded-xl p-5 shadow-lg relative overflow-hidden transition-all hover:border-[#D47E30]/30 hover:shadow-[#6D3B07]/10">
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-xs font-medium text-slate-400 uppercase tracking-wider">{title}</p>
-          <h3 className="text-2xl font-bold text-slate-100 mt-1 tracking-tight">{value}</h3>
-          {subtitle && <p className="text-xs text-slate-400 mt-1">{subtitle}</p>}
+          <p className="text-xs font-medium text-[#7C5A46] uppercase tracking-wider">{title}</p>
+          <h3 className="text-2xl font-bold text-[#2B1D12] mt-1 tracking-tight">{value}</h3>
+          {subtitle && <p className="text-xs text-[#7C5A46] mt-1">{subtitle}</p>}
         </div>
-        <div className={`p-3 rounded-lg bg-${color}-500/10 border border-${color}-500/20 text-${color}-400`}>
+        <div className={`p-3 rounded-lg ${
+          color === 'blue' ? 'bg-[#D47E30]/10 border border-[#D47E30]/30 text-[#6D3B07]' :
+          color === 'emerald' ? 'bg-[#6F4E37]/10 border border-[#6F4E37]/20 text-[#6F4E37]' :
+          color === 'amber' ? 'bg-[#F3DEB7] border border-[#D47E30]/30 text-[#6D3B07]' :
+          'bg-[#6F4E37]/10 border border-[#6F4E37]/20 text-[#6F4E37]'
+        }`}>
           <Icon className="w-5 h-5" />
         </div>
       </div>
       {trend && (
-        <div className="mt-3 pt-3 border-t border-slate-700/40 flex items-center text-xs">
+        <div className="mt-3 pt-3 border-t border-[#6F4E37]/20 flex items-center text-xs">
           <span className={`font-semibold ${
-            trendType === 'positive' ? 'text-emerald-400' :
-            trendType === 'negative' ? 'text-rose-400' : 'text-slate-400'
+            trendType === 'positive' ? 'text-[#6F4E37]' :
+            trendType === 'negative' ? 'text-[#6D3B07]' : 'text-[#7C5A46]'
           }`}>
             {trend}
           </span>
-          <span className="text-slate-500 ml-1.5">vs previous period</span>
+          <span className="text-[#7C5A46] ml-1.5">vs previous period</span>
         </div>
       )}
     </div>

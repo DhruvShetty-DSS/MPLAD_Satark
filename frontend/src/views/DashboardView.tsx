@@ -82,22 +82,27 @@ export const DashboardView: React.FC = () => {
   return (
     <div className="p-6 space-y-6">
       {/* Priority Attention Banner */}
-      <div className="bg-gradient-to-r from-rose-950/70 via-slate-900 to-slate-900 border border-rose-800/60 p-5 rounded-2xl shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-        <div className="flex items-start space-x-3.5">
-          <div className="p-3 bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-xl mt-0.5 animate-pulse">
-            <ShieldAlert className="w-6 h-6" />
-          </div>
-          <div>
-            <div className="flex items-center space-x-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-rose-400">Priority Attention Required</span>
-              <span className="px-2 py-0.5 text-[10px] font-semibold bg-rose-500/20 text-rose-300 rounded-full border border-rose-500/30">Action Needed Today</span>
+      <div className="rounded-[28px] border border-[#6F4E37]/35 bg-[#F5F5DC] p-3 shadow-[0_12px_28px_rgba(109,59,7,0.12)]">
+        <div className="relative overflow-hidden rounded-[22px] bg-gradient-to-r from-[#d88d7b] via-[#7a5348] to-[#2e201d] p-5 lg:p-6">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.12),transparent_38%)]" />
+          <div className="relative flex items-start gap-3.5">
+            <div className="mt-0.5 flex h-11 w-11 items-center justify-center rounded-xl border border-[#f7d5ce] bg-[#d95d52]/75 text-[#fff4ee] shadow-inner shadow-[#7a2a28]/20">
+              <ShieldAlert className="w-5 h-5" />
             </div>
-            <h2 className="text-base font-bold text-slate-100 mt-0.5">
-              {summary?.high_risk_projects || 470} High & Critical Risk Works Monitored Nationwide
-            </h2>
-            <p className="text-xs text-slate-400 mt-1">
-              Top critical anomalies flag expenditure velocity mismatches, severe completion delays (&gt;90d), and unverified cost overruns.
-            </p>
+            <div>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#f9dfda]">Priority Attention Required</span>
+                <span className="rounded-full border border-[#f7c7bf] bg-[#f3d7d3]/15 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#fff0ee]">
+                  Action Needed Today
+                </span>
+              </div>
+              <h2 className="mt-2 text-[18px] font-bold leading-snug text-[#f8f2ec] sm:text-[20px]">
+                {summary?.high_risk_projects || 470} High & Critical Risk Works Monitored Nationwide
+              </h2>
+              <p className="mt-2 max-w-4xl text-sm text-[#e7d6cd]">
+                Top critical anomalies flag expenditure velocity mismatches, severe completion delays (&gt;90d), and unverified cost overruns.
+              </p>
+            </div>
           </div>
         </div>
       </div>

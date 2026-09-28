@@ -53,7 +53,7 @@ const MainLayout: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-slate-950 text-slate-100">
+    <div className="flex min-h-screen bg-[#F5F5DC] text-[#2B1D12]">
       <Sidebar currentView={currentView} onSelectView={setCurrentView} />
       <div className="flex-1 flex flex-col min-w-0">
         <Header />
