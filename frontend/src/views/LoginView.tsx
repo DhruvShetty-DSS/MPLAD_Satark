@@ -45,9 +45,9 @@ export const LoginView: React.FC = () => {
             <ShieldCheck className="w-9 h-9" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-slate-100 tracking-tight">MPLADS AI Sentinel</h1>
+            <h1 className="text-2xl font-bold text-slate-100 tracking-tight">SATARK</h1>
             <p className="text-xs text-amber-400 font-semibold tracking-wider uppercase mt-1">
-              Ministry of Statistics & Programme Implementation (MoSPI)
+              MoSPI DIID Platform
             </p>
           </div>
           <p className="text-xs text-slate-400">

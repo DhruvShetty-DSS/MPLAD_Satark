@@ -1,4 +1,4 @@
-# MPLADS AI Sentinel
+# SATARK
 
 > **Tagline**: *"AI-powered intelligence for transparent, efficient and accountable MPLADS implementation."*
 

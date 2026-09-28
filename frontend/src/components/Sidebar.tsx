@@ -38,8 +38,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ currentView, onSelectView }) =
             <ShieldCheck className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="font-bold text-slate-100 text-sm tracking-tight">MPLADS AI Sentinel</h1>
-            <p className="text-[10px] uppercase tracking-wider text-amber-400 font-semibold">MoSPI DIID Platform</p>
+            <h1 className="font-bold text-slate-100 text-sm tracking-tight">SATARK</h1>
           </div>
         </div>
 

@@ -2,7 +2,7 @@ import os
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "MPLADS AI Sentinel"
+    PROJECT_NAME: str = "SATARK"
     API_V1_STR: str = "/api/v1"
     SECRET_KEY: str = "mplads-ai-sentinel-secret-key-2026-hackathon-mospi"
     ALGORITHM: str = "HS256"

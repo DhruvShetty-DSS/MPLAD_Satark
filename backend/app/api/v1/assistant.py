@@ -103,7 +103,7 @@ def handle_assistant_query(payload: AssistantQueryRequest, db: Session = Depends
         return {
             "query": payload.query,
             "intent": "General System Intelligence Query",
-            "answer": f"MPLADS AI Sentinel is currently monitoring {total_projects:,} active works across India. There are {high_risk_cnt} projects categorized under High or Critical risk requiring administrative verification.",
+            "answer": f"SATARK is currently monitoring {total_projects:,} active works across India. There are {high_risk_cnt} projects categorized under High or Critical risk requiring administrative verification.",
             "data": [
                 {"metric": "Total Monitored Projects", "value": total_projects},
                 {"metric": "High & Critical Risk Projects", "value": high_risk_cnt}
