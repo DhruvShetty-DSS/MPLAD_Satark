@@ -38,6 +38,7 @@
 .bg-slate-900\/80 { background-color: rgba(239, 226, 209, 0.8) !important; }
 .bg-slate-900\/90 { background-color: rgba(239, 226, 209, 0.9) !important; }
 .bg-slate-800 { background-color: var(--satark-surface) !important; }
+.bg-slate-800\/90 { background-color: rgba(248, 241, 225, 0.9) !important; }
 .bg-slate-800\/40 { background-color: rgba(248, 241, 225, 0.4) !important; }
 .bg-slate-800\/60 { background-color: rgba(248, 241, 225, 0.6) !important; }
 .bg-slate-800\/80 { background-color: rgba(248, 241, 225, 0.8) !important; }
